@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner (System.in);
+        int nWords = scan.nextInt();
+        //array to hold words
+        ArrayList<String> words = new ArrayList<String>();
+        while(scan.hasNext()){
+            words.add(scan.next());
+        }
+        scan.close();
+
+        //iterate through words array
+        for(int i = 0; i < words.size(); i++){
+            //split word to individual characters
+            char[] myCharArray = words.get(i).toCharArray();
+            //using string builders to hold each character set
+            StringBuilder even = new StringBuilder();
+            StringBuilder odd = new StringBuilder();
+
+            //iterate through split word, sort into odd & even Stringbuilders
+            for(int j = 0; j < myCharArray.length; j++){
+                if(j % 2 == 0){
+                    even.append(myCharArray[j]);
+                }
+                else{
+                    odd.append(myCharArray[j]);
+                }
+            }
+            System.out.println(even + " " + odd);
+        }
+    }
+}
