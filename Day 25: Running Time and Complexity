@@ -12,7 +12,7 @@ public class Solution {
             if(temp == true){
                 System.out.println("Prime");
             }
-            else{
+            else if(temp == false){
                 System.out.println("Not prime");
             }
         }
