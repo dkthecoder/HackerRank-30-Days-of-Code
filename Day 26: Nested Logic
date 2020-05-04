@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        //date of return
+        int[] set1 = new int[3];
+        set1[0] = scan.nextInt();
+        set1[1] = scan.nextInt();
+        set1[2] = scan.nextInt();
+        scan.nextLine();
+        //date book was due
+        int[] set2 = new int[3];
+        set2[0] = scan.nextInt();
+        set2[1] = scan.nextInt();
+        set2[2] = scan.nextInt();
+        scan.close();
+
+        //if book late by days
+        if(set1[2] == set2[2] && set1[1] == set2[1] && set1[0] > set2[0]){
+            int temp = (set1[0] - set2[0]) * 15;
+            System.out.println(temp);
+        }
+        //if book late by months
+        else if(set1[2] == set2[2] && set1[1] > set2[1]){
+            int temp = (set1[1] - set2[1]) * 500;
+            System.out.println(temp);
+        }
+        //if book is late by years
+        else if(set1[2] > set2[2]){
+            System.out.println(10000);
+        }
+        else{
+            System.out.println(0);
+        }
+    }
+}
