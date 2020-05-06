@@ -1,0 +1,53 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> email = new ArrayList<String>();
+
+        int N = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int NItr = 0; NItr < N; NItr++) {
+            String temp = scanner.nextLine();
+            if(contains(temp)){
+                String[] firstNameEmailID = temp.split(" ");
+                names.add(firstNameEmailID[0]);
+                email.add(firstNameEmailID[1]); 
+            }
+        }
+        scanner.close();
+
+        Collections.sort(names);
+        for(int i = 0; i < names.size(); i++){
+            System.out.println(names.get(i));
+        }
+    }
+
+    public static boolean contains(String item){
+        //Item we want to find a match off
+        String myRegExString = ".+@gmail\\.com$";
+        //This is the string we will check to see if our regex matches:
+        String myString = item;
+        //Create a Pattern object (compiled RegEx) and save it as 'p'
+        Pattern p = Pattern.compile(myRegExString);
+        //We need a Matcher to match our compiled RegEx to a String
+        Matcher m = p.matcher(myString);
+        //If our Matcher finds a match
+        if(m.find()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+}
